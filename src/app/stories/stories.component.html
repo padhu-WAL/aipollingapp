@@ -1,0 +1,31 @@
+<div class="container">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Title" (keyup)="filterStories()">
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Url</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <aitest-story *ngFor="let story of stories" [story]="story" (updateCurrentStory)="updateStory($event)"></aitest-story>
+    </tbody>
+  </table>
+
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Raw JSON</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <pre>{{currentStory | json}}</pre>
+    </div>
+  </ng-template>
+</div>
