@@ -1,7 +1,29 @@
-<div class="container">
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Title" (keyup)="filterStories()">
+<div class="header">
+    <div  class=" form-group search-inner container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Title" (keyup)="filterStories()" placeholder="Search by Title" />
+        <span class="inner-search-icon">
+          <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+          <title>Icons/Nav/Search Light</title>
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Icons/Nav/Search-Light" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Group" transform="translate(2.000000, 2.000000)" stroke="#E2E8F2" stroke-width="2">
+          <circle id="Oval-4" cx="5" cy="5" r="4"></circle>
+          <path d="M8,8 L11.1117692,11.1117692" id="Path-4" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+          </g>
+          </svg>
 
-  <table class="table table-responsive">
+        </span>
+    </div>
+</div>
+<div class="container">
+
+     
+  
+
+  <table class="table table-responsive table-bordered">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -11,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <aitest-story *ngFor="let story of stories" [story]="story" (updateCurrentStory)="updateStory($event)"></aitest-story>
+      <aitest-story *ngFor="let story of stories; let i = index" [story]="story" (click)="updateStory(i)"></aitest-story>
     </tbody>
   </table>
 

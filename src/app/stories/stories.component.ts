@@ -4,6 +4,7 @@ import { Story } from '../_interfaces/story.interface';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
+
 @Component({
   selector: 'aitest-stories',
   templateUrl: './stories.component.html',
@@ -29,7 +30,6 @@ export class StoriesComponent implements OnInit {
   getStories() {
     this._algoliaService.getNewStories().subscribe((stories: Story[] ) => {
       this.allStories = this.stories = stories['hits'];
-      console.log(this.allStories);
     });
   }
 
@@ -46,8 +46,8 @@ export class StoriesComponent implements OnInit {
     this.modalRef = this.modalService.show(this.content);
   }
 
-  updateStory(story: Story) {
-    this.currentStory = story;
+  updateStory(storyIndex) {
+    this.currentStory  = this.allStories[storyIndex];
     this.modalRef = this.modalService.show(this.content);
   }
 
